@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大阪旅行 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:         #FDF0F4;
+            --bg-card:    #FFFFFF;
+            --bg-hover:   #FFF5F8;
+            --accent:     #C2436E;
+            --accent-dim: rgba(194, 67, 110, 0.10);
+            --accent-glow:rgba(194, 67, 110, 0.05);
+            --text:       #2A1520;
+            --text-2:     #9B7A88;
+            --border:     rgba(194, 67, 110, 0.12);
+            --track:      rgba(194, 67, 110, 0.35);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', 'Noto Serif JP', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative;
+            padding: 5rem 2rem 3.5rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-watermark {
+            position: absolute;
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(7rem, 22vw, 20rem);
+            font-weight: 300;
+            color: rgba(194, 67, 110, 0.07);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.35em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .hero-en {
+            font-size: clamp(0.65rem, 2vw, 0.8rem);
+            font-weight: 300;
+            letter-spacing: 0.5em;
+            color: var(--text-2);
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--accent-dim);
+            border: 1px solid rgba(194, 67, 110, 0.22);
+            border-radius: 2rem;
+            padding: 0.55rem 1.5rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            position: relative;
+        }
+
+        .hero-badge .sep {
+            color: var(--text-2);
+            font-size: 0.65rem;
+        }
+
+        /* ─── NAV ─── */
+        .nav-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(253, 240, 244, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.15rem;
+            padding: 0.6rem 0;
+        }
+
+        .nav-tab {
+            flex: 1;
+            min-width: 0;
+            background: none;
+            border: 1px solid transparent;
+            border-radius: 0.5rem;
+            padding: 0.4rem 0.2rem;
+            cursor: pointer;
+            color: var(--text-2);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 400;
+            transition: all 0.18s ease;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .nav-tab .date-num {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: 0.01em;
+            transition: color 0.18s;
+        }
+
+        /* ─── EXTRA TAGS (below hero) ─── */
+        .extra-tags {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1.25rem;
+        }
+
+        .extra-tag {
+            background: rgba(194, 67, 110, 0.07);
+            border: 1px solid rgba(194, 67, 110, 0.18);
+            border-radius: 2rem;
+            padding: 0.45rem 1.2rem;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-2);
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.18s;
+        }
+        .extra-tag:hover { border-color: var(--accent); color: var(--accent); }
+        .extra-tag.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        .nav-tab:hover {
+            background: var(--accent-glow);
+            color: var(--text);
+        }
+        .nav-tab:hover .date-num { color: var(--text); }
+
+        .nav-tab.active {
+            background: var(--accent-dim);
+            border-color: rgba(240, 165, 0, 0.28);
+        }
+        .nav-tab.active,
+        .nav-tab.active .date-num { color: var(--accent); }
+
+        /* ─── MAIN ─── */
+        .main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 5rem;
+        }
+
+        /* ─── DAY PANEL ─── */
+        .day-panel { display: none; }
+        .day-panel.active {
+            display: block;
+            animation: panelIn 0.28s ease;
+        }
+        @keyframes panelIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .day-panel.active { animation: none; }
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .day-big-date {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 2.25rem;
+            font-weight: 300;
+            color: var(--accent);
+            line-height: 1;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+
+        .day-title-wrap { flex: 1; }
+
+        .day-title {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+        }
+
+        .day-sub {
+            font-size: 0.72rem;
+            color: var(--text-2);
+            letter-spacing: 0.05em;
+        }
+
+        .day-pill {
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: var(--accent-dim);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ─── TIMELINE ─── */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        /* the rail */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.7rem;
+            top: 1.2rem;
+            bottom: 1.2rem;
+            width: 2px;
+            background: linear-gradient(to bottom,
+                var(--accent) 0%,
+                rgba(194, 67, 110, 0.3) 70%,
+                rgba(194, 67, 110, 0.05) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .t-dot {
+            position: absolute;
+            left: -2.43rem;
+            top: 1.05rem;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--accent);
+            transition: box-shadow 0.2s;
+        }
+
+        .t-dot.highlight {
+            background: var(--accent);
+            box-shadow: 0 0 0 3px rgba(194, 67, 110, 0.2);
+        }
+
+        .t-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 0.9rem 1.1rem;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .t-card:hover {
+            border-color: rgba(240, 165, 0, 0.18);
+            background: var(--bg-hover);
+        }
+
+        .t-card-top {
+            display: flex;
+            align-items: baseline;
+            gap: 0.65rem;
+        }
+
+        .t-time {
+            font-size: 0.68rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            min-width: 2.8rem;
+        }
+
+        .t-icon { font-size: 1rem; line-height: 1; flex-shrink: 0; }
+
+        .t-name {
+            font-size: 0.88rem;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .t-note {
+            font-size: 0.72rem;
+            color: var(--text-2);
+            line-height: 1.55;
+            margin-top: 0.35rem;
+            padding-left: 4.1rem;
+        }
+
+        /* ─── INFO SECTION ─── */
+        .info-section {
+            margin-top: 2.75rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-2);
+            margin-bottom: 1rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 0.9rem;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.1rem 1.2rem;
+        }
+
+        .info-card-head {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding-bottom: 0.75rem;
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .ic-icon { font-size: 0.95rem; }
+
+        .ic-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-2);
+        }
+
+        .ic-badge {
+            margin-left: auto;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            background: var(--accent-dim);
+            color: var(--accent);
+            padding: 0.2rem 0.55rem;
+            border-radius: 0.25rem;
+        }
+
+        .flight-route {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .f-iata {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .f-line {
+            flex: 1;
+            position: relative;
+            height: 1px;
+            background: linear-gradient(to right, var(--accent), rgba(194, 67, 110, 0.2));
+        }
+
+        .f-line::after {
+            content: '✈';
+            position: absolute;
+            right: -0.4rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.65rem;
+            color: var(--accent);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.45rem;
+        }
+        .info-row:last-child { margin-bottom: 0; }
+
+        .ir-label {
+            font-size: 0.68rem;
+            color: var(--text-2);
+            white-space: nowrap;
+            padding-top: 0.05rem;
+        }
+
+        .ir-val {
+            font-size: 0.78rem;
+            font-weight: 500;
+            text-align: right;
+            line-height: 1.4;
+        }
+
+        .hotel-name {
+            font-size: 0.92rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+
+        /* ─── SAVED PLACES ─── */
+        .saved-panel { display: none; }
+        .saved-panel.active {
+            display: block;
+            animation: panelIn 0.28s ease;
+        }
+
+        .cat-pills {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.75rem;
+        }
+
+        .cat-pill {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            padding: 0.4rem 1.1rem;
+            font-size: 0.76rem;
+            font-weight: 500;
+            color: var(--text-2);
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.18s;
+        }
+        .cat-pill:hover { border-color: var(--accent); color: var(--accent); }
+        .cat-pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 0.85rem;
+        }
+
+        .place-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 1.1rem 1.15rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .place-card:hover {
+            border-color: rgba(194, 67, 110, 0.22);
+            background: var(--bg-hover);
+        }
+
+        .place-card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .place-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .cat-badge {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            padding: 0.2rem 0.55rem;
+            border-radius: 1rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .cat-美食 { background: rgba(220, 80, 50, 0.1); color: #B83A1E; }
+        .cat-玩樂 { background: rgba(80, 110, 210, 0.1); color: #3B56A8; }
+        .cat-景點 { background: rgba(40, 150, 90, 0.1); color: #207A48; }
+
+        .place-note {
+            font-size: 0.72rem;
+            color: var(--text-2);
+            line-height: 1.55;
+            flex: 1;
+        }
+
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.3rem;
+            font-size: 0.71rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'DM Sans', sans-serif;
+            transition: opacity 0.15s;
+        }
+        .map-btn:hover { opacity: 0.7; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 560px) {
+            .hero { padding: 4rem 1.25rem 2.5rem; }
+            .main  { padding: 2rem 1.1rem 4rem; }
+            .timeline { padding-left: 2.5rem; }
+            .timeline::before { left: 0.55rem; }
+            .t-dot { left: -2rem; }
+            .t-note { padding-left: 0; margin-top: 0.4rem; }
+            .day-big-date { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="hero-watermark" aria-hidden="true">大阪</div>
+    <p class="hero-eyebrow">2026 旅行手帖</p>
+    <h1 class="hero-title">大阪</h1>
+    <p class="hero-en">Osaka, Japan</p>
+    <div class="hero-badge">
+        10月1日 <span class="sep">→</span> 10月6日
+        <span class="sep">·</span>
+        6天5夜
+    </div>
+    <div class="extra-tags" id="extraTags"></div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-wrapper" aria-label="日期導覽">
+    <div class="nav-inner">
+        <div class="nav-tabs" id="navTabs" role="tablist"></div>
+    </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main" id="mainContent" aria-live="polite"></main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
