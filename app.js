@@ -1,60 +1,64 @@
 /* ── RENDER NAV ── */
-const navEl = document.getElementById('navTabs');
+const navEl = document.getElementById("navTabs")
 trip.days.forEach((d, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'nav-tab' + (i === 0 ? ' active' : '');
-    btn.dataset.i = i;
-    btn.setAttribute('role', 'tab');
-    btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-    btn.innerHTML = `<span class="date-num">${d.date}</span>${d.wd}`;
-    btn.addEventListener('click', () => switchDay(i));
-    navEl.appendChild(btn);
-});
+  const btn = document.createElement("button")
+  btn.className = "nav-tab" + (i === 0 ? " active" : "")
+  btn.dataset.i = i
+  btn.setAttribute("role", "tab")
+  btn.setAttribute("aria-selected", i === 0 ? "true" : "false")
+  btn.innerHTML = `<span class="date-num">${d.date}</span>${d.wd}`
+  btn.addEventListener("click", () => switchDay(i))
+  navEl.appendChild(btn)
+})
 
-const extraTagsEl = document.getElementById('extraTags');
+const extraTagsEl = document.getElementById("extraTags")
 
-const savedBtn = document.createElement('button');
-savedBtn.className = 'extra-tag';
-savedBtn.textContent = '收藏';
-savedBtn.addEventListener('click', switchToSaved);
-extraTagsEl.appendChild(savedBtn);
+const savedBtn = document.createElement("button")
+savedBtn.className = "extra-tag"
+savedBtn.textContent = "收藏"
+savedBtn.addEventListener("click", switchToSaved)
+extraTagsEl.appendChild(savedBtn)
 
-const hotelBtn = document.createElement('button');
-hotelBtn.className = 'extra-tag';
-hotelBtn.textContent = '住宿';
-hotelBtn.addEventListener('click', switchToHotel);
-extraTagsEl.appendChild(hotelBtn);
+const hotelBtn = document.createElement("button")
+hotelBtn.className = "extra-tag"
+hotelBtn.textContent = "住宿"
+hotelBtn.addEventListener("click", switchToHotel)
+extraTagsEl.appendChild(hotelBtn)
 
-const flightBtn = document.createElement('button');
-flightBtn.className = 'extra-tag';
-flightBtn.textContent = '機票';
-flightBtn.addEventListener('click', switchToFlight);
-extraTagsEl.appendChild(flightBtn);
+const flightBtn = document.createElement("button")
+flightBtn.className = "extra-tag"
+flightBtn.textContent = "機票"
+flightBtn.addEventListener("click", switchToFlight)
+extraTagsEl.appendChild(flightBtn)
 
 /* ── RENDER DAYS ── */
-const mainEl = document.getElementById('mainContent');
+const mainEl = document.getElementById("mainContent")
 
 trip.days.forEach((d, i) => {
-    const panel = document.createElement('section');
-    panel.className = 'day-panel' + (i === 0 ? ' active' : '');
-    panel.id = `day-${i}`;
-    panel.setAttribute('role', 'tabpanel');
+  const panel = document.createElement("section")
+  panel.className = "day-panel" + (i === 0 ? " active" : "")
+  panel.id = `day-${i}`
+  panel.setAttribute("role", "tabpanel")
 
-    const items = d.items.map(it => `
+  const items = d.items
+    .map(
+      (it) => `
         <div class="timeline-item">
-            <div class="t-dot${it.hi ? ' highlight' : ''}"></div>
+            <div class="t-dot${it.hi ? " highlight" : ""}"></div>
             <div class="t-card">
                 <div class="t-card-top">
                     <span class="t-time">${it.time}</span>
                     <span class="t-icon">${it.icon}</span>
                     <span class="t-name">${it.name}</span>
                 </div>
-                ${it.note ? `<p class="t-note">${it.note}</p>` : ''}
+                ${it.note ? `<p class="t-note">${it.note}</p>` : ""}
             </div>
         </div>
-    `).join('');
+    `
+    )
+    .join("")
 
-    panel.innerHTML = `
+  panel.innerHTML = `
         <div class="day-header">
             <div class="day-big-date">${d.date}</div>
             <div class="day-title-wrap">
@@ -64,14 +68,14 @@ trip.days.forEach((d, i) => {
             <span class="day-pill">${d.tag}</span>
         </div>
         <div class="timeline">${items}</div>
-    `;
+    `
 
-    mainEl.appendChild(panel);
-});
+  mainEl.appendChild(panel)
+})
 
 /* ── CARD TEMPLATES ── */
 function flightCard(f, label, badge) {
-    return `
+  return `
     <div class="info-card">
         <div class="info-card-head">
             <span class="ic-icon">✈️</span>
@@ -95,11 +99,11 @@ function flightCard(f, label, badge) {
             <span class="ir-label">抵達</span>
             <span class="ir-val">${f.arrive} · ${f.toName}</span>
         </div>
-    </div>`;
+    </div>`
 }
 
 function hotelCard(h) {
-    return `
+  return `
     <div class="info-card">
         <div class="info-card-head">
             <span class="ic-icon">🏨</span>
@@ -119,137 +123,139 @@ function hotelCard(h) {
             <span class="ir-label">Check-out</span>
             <span class="ir-val">${h.checkOut}</span>
         </div>
-        ${h.mapUrl ? `<a href="${h.mapUrl}" target="_blank" rel="noopener" class="map-btn">在地圖查看 →</a>` : ''}
-    </div>`;
+        ${h.mapUrl ? `<a href="${h.mapUrl}" target="_blank" rel="noopener" class="map-btn">在地圖查看 →</a>` : ""}
+    </div>`
 }
 
 /* ── FLIGHT PANEL ── */
-const flightPanel = document.createElement('section');
-flightPanel.className = 'saved-panel';
-flightPanel.setAttribute('role', 'tabpanel');
+const flightPanel = document.createElement("section")
+flightPanel.className = "saved-panel"
+flightPanel.setAttribute("role", "tabpanel")
 flightPanel.innerHTML = `
-    <div class="day-header">
-        <div class="day-big-date">機票</div>
-        <div class="day-title-wrap">
-            <div class="day-title">去程 & 回程航班</div>
-            <div class="day-sub">Peach Aviation · MM927 / MM928</div>
-        </div>
-    </div>
     <div class="info-grid">
-        ${flightCard(trip.flights.out, '去程', '10/1')}
-        ${flightCard(trip.flights.ret, '回程', '10/6')}
+        ${flightCard(trip.flights.out, "去程", "10/1")}
+        ${flightCard(trip.flights.ret, "回程", "10/6")}
     </div>
-`;
-mainEl.appendChild(flightPanel);
+`
+mainEl.appendChild(flightPanel)
 
 /* ── HOTEL PANEL ── */
-const hotelPanel = document.createElement('section');
-hotelPanel.className = 'saved-panel';
-hotelPanel.setAttribute('role', 'tabpanel');
+const hotelPanel = document.createElement("section")
+hotelPanel.className = "saved-panel"
+hotelPanel.setAttribute("role", "tabpanel")
 hotelPanel.innerHTML = `
-    <div class="day-header">
-        <div class="day-big-date">住宿</div>
-        <div class="day-title-wrap">
-            <div class="day-title">飯店資訊</div>
-            <div class="day-sub">飯店資訊</div>
-        </div>
-    </div>
     <div class="info-grid">
         ${hotelCard(trip.hotels[0])}
     </div>
-`;
-mainEl.appendChild(hotelPanel);
+`
+mainEl.appendChild(hotelPanel)
 
 /* ── SAVED PANEL ── */
-const savedPanel = document.createElement('section');
-savedPanel.className = 'saved-panel';
-savedPanel.setAttribute('role', 'tabpanel');
+const savedPanel = document.createElement("section")
+savedPanel.className = "saved-panel"
+savedPanel.setAttribute("role", "tabpanel")
 savedPanel.innerHTML = `
-    <div class="day-header">
-        <div class="day-big-date">收藏</div>
-        <div class="day-title-wrap">
-            <div class="day-title">美食・玩樂・景點清單</div>
-            <div class="day-sub">點卡片可在 Google Maps 查看位置</div>
-        </div>
-    </div>
+
     <div class="cat-pills">
-        ${['全部','美食','玩樂','景點'].map(c =>
-            `<button class="cat-pill${c==='全部'?' active':''}" data-cat="${c}">${c}</button>`
-        ).join('')}
+        ${["全部", "美食", "玩樂", "景點"]
+          .map((c) => `<button class="cat-pill${c === "全部" ? " active" : ""}" data-cat="${c}">${c}</button>`)
+          .join("")}
+    </div>
+    <div class="meal-pills hidden" id="mealPills">
+        ${["全部", "早餐", "午餐", "晚餐", "甜點"]
+          .map((m) => `<button class="meal-pill${m === "全部" ? " active" : ""}" data-meal="${m}">${m}</button>`)
+          .join("")}
     </div>
     <div class="places-grid" id="placesGrid"></div>
-`;
-mainEl.appendChild(savedPanel);
+`
+mainEl.appendChild(savedPanel)
 
-const placesGrid = document.getElementById('placesGrid');
+const placesGrid = document.getElementById("placesGrid")
 
-function renderPlaces(cat) {
-    savedPanel.querySelectorAll('.cat-pill').forEach(p =>
-        p.classList.toggle('active', p.dataset.cat === cat)
-    );
-    const list = cat === '全部' ? savedPlaces : savedPlaces.filter(p => p.cat === cat);
-    placesGrid.innerHTML = list.map(p => {
-        const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.mapQuery)}`;
-        return `
+function renderPlaces(cat, meal = "全部") {
+  savedPanel.querySelectorAll(".cat-pill").forEach((p) => p.classList.toggle("active", p.dataset.cat === cat))
+
+  const mealPillsEl = document.getElementById("mealPills")
+  if (cat === "美食") {
+    mealPillsEl.classList.remove("hidden")
+    mealPillsEl.querySelectorAll(".meal-pill").forEach((p) => p.classList.toggle("active", p.dataset.meal === meal))
+  } else {
+    mealPillsEl.classList.add("hidden")
+  }
+
+  let list = cat === "全部" ? savedPlaces : savedPlaces.filter((p) => p.cat === cat)
+  if (cat === "美食" && meal !== "全部") list = list.filter((p) => p.meal === meal)
+  placesGrid.innerHTML = list
+    .map((p) => {
+      const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.mapQuery)}`
+      return `
         <div class="place-card">
             <div class="place-card-top">
                 <span class="place-name">${p.name}</span>
                 <span class="cat-badge cat-${p.cat}">${p.cat}</span>
             </div>
-            ${p.note ? `<p class="place-note">${p.note}</p>` : ''}
+            ${p.note ? `<p class="place-note">${p.note}</p>` : ""}
             <a href="${url}" target="_blank" rel="noopener" class="map-btn">在地圖查看 →</a>
-        </div>`;
-    }).join('');
+        </div>`
+    })
+    .join("")
 }
 
-renderPlaces('全部');
+renderPlaces("全部")
 
-savedPanel.querySelectorAll('.cat-pill').forEach(pill => {
-    pill.addEventListener('click', () => renderPlaces(pill.dataset.cat));
-});
+savedPanel.querySelectorAll(".cat-pill").forEach((pill) => {
+  pill.addEventListener("click", () => renderPlaces(pill.dataset.cat))
+})
+
+document
+  .getElementById("mealPills")
+  .querySelectorAll(".meal-pill")
+  .forEach((pill) => {
+    pill.addEventListener("click", () => renderPlaces("美食", pill.dataset.meal))
+  })
 
 /* ── SWITCH ── */
-const extraPanels = [flightPanel, hotelPanel, savedPanel];
+const extraPanels = [flightPanel, hotelPanel, savedPanel]
 
 function deactivateAll() {
-    document.querySelectorAll('.nav-tab').forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
-    });
-    document.querySelectorAll('.extra-tag').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
-    extraPanels.forEach(p => p.classList.remove('active'));
+  document.querySelectorAll(".nav-tab").forEach((btn) => {
+    btn.classList.remove("active")
+    btn.setAttribute("aria-selected", "false")
+  })
+  document.querySelectorAll(".extra-tag").forEach((btn) => btn.classList.remove("active"))
+  document.querySelectorAll(".day-panel").forEach((p) => p.classList.remove("active"))
+  extraPanels.forEach((p) => p.classList.remove("active"))
 }
 
 function scrollToNav() {
-    window.scrollTo({ top: document.querySelector('.nav-wrapper').offsetTop - 4, behavior: 'smooth' });
+  window.scrollTo({ top: document.querySelector(".nav-wrapper").offsetTop - 4, behavior: "smooth" })
 }
 
 function switchDay(idx) {
-    deactivateAll();
-    document.querySelectorAll('.nav-tab')[idx].classList.add('active');
-    document.querySelectorAll('.nav-tab')[idx].setAttribute('aria-selected', 'true');
-    document.querySelectorAll('.day-panel')[idx].classList.add('active');
-    scrollToNav();
+  deactivateAll()
+  document.querySelectorAll(".nav-tab")[idx].classList.add("active")
+  document.querySelectorAll(".nav-tab")[idx].setAttribute("aria-selected", "true")
+  document.querySelectorAll(".day-panel")[idx].classList.add("active")
+  scrollToNav()
 }
 
 function switchToFlight() {
-    deactivateAll();
-    flightBtn.classList.add('active');
-    flightPanel.classList.add('active');
-    scrollToNav();
+  deactivateAll()
+  flightBtn.classList.add("active")
+  flightPanel.classList.add("active")
+  scrollToNav()
 }
 
 function switchToHotel() {
-    deactivateAll();
-    hotelBtn.classList.add('active');
-    hotelPanel.classList.add('active');
-    scrollToNav();
+  deactivateAll()
+  hotelBtn.classList.add("active")
+  hotelPanel.classList.add("active")
+  scrollToNav()
 }
 
 function switchToSaved() {
-    deactivateAll();
-    savedBtn.classList.add('active');
-    savedPanel.classList.add('active');
-    scrollToNav();
+  deactivateAll()
+  savedBtn.classList.add("active")
+  savedPanel.classList.add("active")
+  scrollToNav()
 }

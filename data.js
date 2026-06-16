@@ -31,7 +31,8 @@ const trip = {
       nights: "10/1 – 10/6",
       checkIn: "15:00",
       checkOut: "11:00",
-      mapUrl: "https://www.google.com/maps/place/難波南大國站前APA飯店/data=!4m2!3m1!1s0x6000e7bf75fc475f:0xb819ff11a45bb926?sa=X&ved=1t:242&ictx=111"
+      mapUrl:
+        "https://www.google.com/maps/place/難波南大國站前APA飯店/data=!4m2!3m1!1s0x6000e7bf75fc475f:0xb819ff11a45bb926?sa=X&ved=1t:242&ictx=111"
     }
   ],
   days: [
@@ -41,8 +42,8 @@ const trip = {
       title: "抵達大阪",
       tag: "Day 1",
       items: [
-        { time: "09:00", icon: "✈️", name: "桃園機場出發", note: "MM927 · 建議提前2小時辦理登機" },
-        { time: "12:35", icon: "🛬", name: "抵達關西機場", note: "入境 → 提取行李 → 換日幣／購買 ICOCA", hi: true },
+        { time: "14:10", icon: "✈️", name: "高雄機場出發", note: "MM032 · 建議提前2小時辦理登機" },
+        { time: "18:15", icon: "🛬", name: "抵達關西機場", note: "入境 → 提取行李 → 換日幣／購買 ICOCA", hi: true },
         {
           time: "14:00",
           icon: "🚄",
@@ -153,15 +154,16 @@ const trip = {
 /* ── 收藏景點：修改這裡新增/移除地點 ── */
 const savedPlaces = [
   // 美食
-  { name: "黒門市場", cat: "美食", note: "大阪廚房・海鮮串、松阪牛一口サイズ", mapQuery: "黒門市場 大阪" },
-  { name: "道頓堀たこ焼き", cat: "美食", note: "跟著人潮找的排隊攤位，不用特定一家", mapQuery: "道頓堀 たこ焼き 大阪" },
+  { name: "馬屋午間套餐", cat: "美食", meal: "午餐", note: "Threads 推薦午間套餐", mapQuery: "但馬屋+心齋橋店" },
+  { name: "道頓堀たこ焼き", cat: "美食", meal: "晚餐", note: "跟著人潮找的排隊攤位，不用特定一家", mapQuery: "道頓堀 たこ焼き 大阪" },
   {
     name: "串カツ 達磨 新世界",
     cat: "美食",
+    meal: "午餐",
     note: "新世界元祖名店・二度漬け禁止！",
     mapQuery: "串カツ達磨 新世界 大阪"
   },
-  { name: "一蘭拉麵 道頓堀店", cat: "美食", note: "隔板單人座位，豚骨湯底經典款", mapQuery: "一蘭 道頓堀 大阪" },
+  { name: "麦と麺助", cat: "美食", meal: "午餐", note: "Threads推薦醬油拉麵", mapQuery: "麦と麺助 新梅田中津店" },
   // 玩樂
   {
     name: "Universal Studios Japan",
@@ -177,7 +179,7 @@ const savedPlaces = [
     mapQuery: "あべのハルカス 大阪"
   },
   // 景點
-  { name: "大阪城公園", cat: "景點", note: "天守閣入場 ¥600・秋天楓紅美景", mapQuery: "大阪城公園" },
+  { name: "勝尾寺", cat: "景點", note: "Threads", mapQuery: "勝尾寺" },
   { name: "通天閣・新世界", cat: "景點", note: "昭和30年代復古街道・必逛！", mapQuery: "通天閣 新世界 大阪" },
   { name: "住吉大社", cat: "景點", note: "大阪最古老神社・太鼓橋超上相", mapQuery: "住吉大社 大阪" },
   { name: "道頓堀", cat: "景點", note: "グリコ看板・戎橋・法善寺横丁", mapQuery: "道頓堀 大阪" },
