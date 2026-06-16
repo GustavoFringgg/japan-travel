@@ -119,6 +119,7 @@ function hotelCard(h) {
             <span class="ir-label">Check-out</span>
             <span class="ir-val">${h.checkOut}</span>
         </div>
+        ${h.mapUrl ? `<a href="${h.mapUrl}" target="_blank" rel="noopener" class="map-btn">在地圖查看 →</a>` : ''}
     </div>`;
 }
 
@@ -150,12 +151,11 @@ hotelPanel.innerHTML = `
         <div class="day-big-date">住宿</div>
         <div class="day-title-wrap">
             <div class="day-title">飯店資訊</div>
-            <div class="day-sub">兩間飯店・5晚</div>
+            <div class="day-sub">飯店資訊</div>
         </div>
     </div>
     <div class="info-grid">
         ${hotelCard(trip.hotels[0])}
-        ${hotelCard(trip.hotels[1])}
     </div>
 `;
 mainEl.appendChild(hotelPanel);
