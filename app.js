@@ -31,6 +31,12 @@ flightBtn.textContent = "機票"
 flightBtn.addEventListener("click", switchToFlight)
 extraTagsEl.appendChild(flightBtn)
 
+const transitBtn = document.createElement("button")
+transitBtn.className = "extra-tag"
+transitBtn.textContent = "交通"
+transitBtn.addEventListener("click", switchToTransit)
+extraTagsEl.appendChild(transitBtn)
+
 /* ── RENDER DAYS ── */
 const mainEl = document.getElementById("mainContent")
 
@@ -150,6 +156,45 @@ hotelPanel.innerHTML = `
 `
 mainEl.appendChild(hotelPanel)
 
+/* ── TRANSIT PANEL ── */
+const transitPanel = document.createElement("section")
+transitPanel.className = "saved-panel"
+transitPanel.setAttribute("role", "tabpanel")
+transitPanel.innerHTML = `
+    <div class="cat-pills" id="transitDayPills">
+        ${trip.transit.map((d, i) => `
+            <button class="cat-pill${i === 0 ? " active" : ""}" data-idx="${i}">${d.date}</button>
+        `).join("")}
+    </div>
+    <div class="info-grid" id="transitGrid"></div>
+`
+mainEl.appendChild(transitPanel)
+
+function renderTransit(idx) {
+  transitPanel.querySelectorAll(".cat-pill").forEach((p, i) => p.classList.toggle("active", i === idx))
+  document.getElementById("transitGrid").innerHTML = trip.transit[idx].cards.map(card => `
+    <div class="info-card">
+        <div class="info-card-head">
+            <span class="ic-icon">${card.icon}</span>
+            <span class="ic-label">${card.label}</span>
+            <span class="ic-badge">${card.badge}</span>
+        </div>
+        ${card.rows.map(r => `
+            <div class="info-row">
+                <span class="ir-label">${r.label}</span>
+                <span class="ir-val">${r.val}</span>
+            </div>
+        `).join("")}
+    </div>
+  `).join("")
+}
+
+renderTransit(0)
+
+transitPanel.querySelectorAll("#transitDayPills .cat-pill").forEach((pill, i) => {
+  pill.addEventListener("click", () => renderTransit(i))
+})
+
 /* ── SAVED PANEL ── */
 const savedPanel = document.createElement("section")
 savedPanel.className = "saved-panel"
@@ -215,7 +260,7 @@ document
   })
 
 /* ── SWITCH ── */
-const extraPanels = [flightPanel, hotelPanel, savedPanel]
+const extraPanels = [flightPanel, hotelPanel, transitPanel, savedPanel]
 
 function deactivateAll() {
   document.querySelectorAll(".nav-tab").forEach((btn) => {
@@ -250,6 +295,13 @@ function switchToHotel() {
   deactivateAll()
   hotelBtn.classList.add("active")
   hotelPanel.classList.add("active")
+  scrollToNav()
+}
+
+function switchToTransit() {
+  deactivateAll()
+  transitBtn.classList.add("active")
+  transitPanel.classList.add("active")
   scrollToNav()
 }
 

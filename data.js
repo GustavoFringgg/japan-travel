@@ -5,9 +5,9 @@ const trip = {
       flightNo: "MM032",
       airline: "Peach Aviation",
       from: "KHH",
-      fromName: "台灣高雄",
+      fromName: "KHH",
       to: "KIX",
-      toName: "關西國際",
+      toName: "關西國際T2",
       depart: "14:10",
       arrive: "18:15",
       date: "2026/10/01"
@@ -16,9 +16,9 @@ const trip = {
       flightNo: "MM031",
       airline: "Peach Aviation",
       from: "KIX",
-      fromName: "關西國際",
+      fromName: "關西國際T2",
       to: "KHH",
-      toName: "台灣高雄",
+      toName: "KHH",
       depart: "10:45",
       arrive: "13:10",
       date: "2026/10/06"
@@ -26,13 +26,116 @@ const trip = {
   },
   hotels: [
     {
-      name: "難波南大國站前APA飯店",
+      name: "住一難波南3號店",
       area: "難波・中央區",
       nights: "10/1 – 10/6",
       checkIn: "15:00",
       checkOut: "11:00",
-      mapUrl:
-        "https://www.google.com/maps/place/難波南大國站前APA飯店/data=!4m2!3m1!1s0x6000e7bf75fc475f:0xb819ff11a45bb926?sa=X&ved=1t:242&ictx=111"
+      mapUrl: "https://maps.app.goo.gl/RWkgKKbw43bXrVZc6"
+    }
+  ],
+  transit: [
+    {
+      date: "10/1",
+      cards: [
+        {
+          icon: "🚃",
+          label: "關西機場 → 大國町站",
+          badge: "南海電鐵",
+          rows: [
+            { label: "Step 1", val: "關西機場站搭 南海空港急行 或 Rapi:t 特急 → 南海難波站（約 35～45 分）" },
+            { label: "Step 2", val: "站內步行至 Osaka Metro 難波站（約 5～8 分）" },
+            { label: "Step 3", val: "搭御堂筋線 或 四橋線 往天王寺方向 → 大國町站（1 站・約 2 分）" },
+            { label: "總車程", val: "約 50～60 分鐘" }
+          ]
+        },
+        {
+          icon: "💳",
+          label: "ICOCA 交通卡",
+          badge: "機場購買",
+          rows: [
+            { label: "購買地點", val: "關西機場各大售票機" },
+            { label: "押金", val: "¥500（退卡可退還）" },
+            { label: "建議加值", val: "¥3,000 – ¥5,000 可撐整趟旅程" },
+            { label: "適用範圍", val: "地鐵・JR・巴士・部分便利商店" }
+          ]
+        }
+      ]
+    },
+    {
+      date: "10/2",
+      cards: [
+        {
+          icon: "🚇",
+          label: "大阪城・心斎橋",
+          badge: "地鐵為主",
+          rows: [
+            { label: "飯店 → 大阪城", val: "大國町站 → 谷町四丁目站（谷町線）・約 10 分" },
+            { label: "大阪城 → 黒門市場", val: "步行約 15 分 or 地鐵至日本橋站" },
+            { label: "黒門 → 心斎橋", val: "步行約 10 分" }
+          ]
+        }
+      ]
+    },
+    {
+      date: "10/3",
+      cards: [
+        {
+          icon: "🚇",
+          label: "住吉大社・天王寺・新世界",
+          badge: "地鐵 + 阪堺電車",
+          rows: [
+            { label: "飯店 → 住吉大社", val: "大國町站 → 天王寺站（御堂筋線）→ 阪堺電車 → 住吉大社前（約 40 分）" },
+            { label: "住吉大社 → 天王寺", val: "阪堺電車 → 天王寺駅前（約 25 分）" },
+            { label: "天王寺 → 新世界", val: "步行約 10 分 or 地鐵動物園前站 1 站" }
+          ]
+        }
+      ]
+    },
+    {
+      date: "10/4",
+      cards: [
+        {
+          icon: "🚇",
+          label: "梅田・北大阪",
+          badge: "御堂筋線直達",
+          rows: [
+            { label: "飯店 → 梅田", val: "大國町站 → 梅田站（御堂筋線）・約 10 分" },
+            { label: "梅田站出口", val: "Grand Front 方向・地下街直通" }
+          ]
+        }
+      ]
+    },
+    {
+      date: "10/5",
+      cards: [
+        {
+          icon: "🎢",
+          label: "飯店 → USJ",
+          badge: "JR 夢咲線",
+          rows: [
+            { label: "路線", val: "大國町站 → 難波站 → 西九條站 → ユニバーサルシティ站（JR 夢咲線）" },
+            { label: "總車程", val: "約 30～40 分" },
+            { label: "建議", val: "開園前 30 分出發，旺季人多要早" }
+          ]
+        }
+      ]
+    },
+    {
+      date: "10/6",
+      cards: [
+        {
+          icon: "🚃",
+          label: "難波 → 關西機場",
+          badge: "南海 Rapi:t",
+          rows: [
+            { label: "路線", val: "南海難波站搭 Rapi:t 特急 → 關西機場站" },
+            { label: "所需時間", val: "約 45 分鐘" },
+            { label: "出發建議", val: "飛機起飛前 3 小時離開飯店" },
+            { label: "備註", val: "抵達 T1，Peach 使用 T2 需搭接駁電車（約 5 分）" }
+          ]
+        }
+      ]
     }
   ],
   days: [
@@ -43,16 +146,15 @@ const trip = {
       tag: "Day 1",
       items: [
         { time: "14:10", icon: "✈️", name: "高雄機場出發", note: "MM032 · 建議提前2小時辦理登機" },
-        { time: "18:15", icon: "🛬", name: "抵達關西機場", note: "入境 → 提取行李 → 換日幣／購買 ICOCA", hi: true },
+        { time: "18:15", icon: "🛬", name: "抵達關西機場 T2", note: "入境 → 提取行李", hi: true },
+        { time: "19:00", icon: "🚃", name: "搭南海電鐵往難波", note: "南海空港急行 or Rapi:t 特急 · 約 40 分" },
         {
-          time: "14:00",
-          icon: "🚄",
-          name: "Haruka 特急往大阪",
-          note: "關空特急 HARUKA · 約75分 · 建議買「ICOCA & HARUKA」套票"
+          time: "20:00",
+          icon: "🚇",
+          name: "地鐵轉乘 → 大國町站",
+          note: "步行至 Osaka Metro 難波站 → 御堂筋線 or 四橋線 1 站"
         },
-        { time: "15:30", icon: "🏨", name: "飯店 Check-in", note: "Dormy Inn Premium 難波" },
-        { time: "18:00", icon: "🌆", name: "道頓堀散步", note: "グリコ看板 · 戎橋 · 法善寺横丁" },
-        { time: "19:30", icon: "🐙", name: "晚餐：道頓堀たこ焼き", note: "跟著人潮找當地人排隊的攤位" }
+        { time: "20:15", icon: "🏨", name: "飯店 Check-in", note: "住一難波南3號店" }
       ]
     },
     {
@@ -155,7 +257,13 @@ const trip = {
 const savedPlaces = [
   // 美食
   { name: "馬屋午間套餐", cat: "美食", meal: "午餐", note: "Threads 推薦午間套餐", mapQuery: "但馬屋+心齋橋店" },
-  { name: "道頓堀たこ焼き", cat: "美食", meal: "晚餐", note: "跟著人潮找的排隊攤位，不用特定一家", mapQuery: "道頓堀 たこ焼き 大阪" },
+  {
+    name: "道頓堀たこ焼き",
+    cat: "美食",
+    meal: "晚餐",
+    note: "跟著人潮找的排隊攤位，不用特定一家",
+    mapQuery: "道頓堀 たこ焼き 大阪"
+  },
   {
     name: "串カツ 達磨 新世界",
     cat: "美食",
