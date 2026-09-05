@@ -51,7 +51,7 @@ trip.days.forEach((d, i) => {
       (it) => `
         <div class="timeline-item">
             <div class="t-dot${it.hi ? " highlight" : ""}"></div>
-            <${it.mapUrl ? `a href="${it.mapUrl}" target="_blank" rel="noopener"` : "div"} class="t-card${it.expand ? " has-expand" : ""}${it.mapUrl ? " has-map" : ""}">
+            <${it.mapUrl ? `a href="${it.mapUrl}"` : "div"} class="t-card${it.expand ? " has-expand" : ""}${it.mapUrl ? " has-map" : ""}">
                 <div class="t-card-top">
                     <span class="t-time">${it.time}</span>
                     <span class="t-icon">${it.icon}</span>
