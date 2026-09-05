@@ -51,13 +51,18 @@ trip.days.forEach((d, i) => {
       (it) => `
         <div class="timeline-item">
             <div class="t-dot${it.hi ? " highlight" : ""}"></div>
-            <div class="t-card">
+            <div class="t-card${it.expand ? " has-expand" : ""}">
                 <div class="t-card-top">
                     <span class="t-time">${it.time}</span>
                     <span class="t-icon">${it.icon}</span>
                     <span class="t-name">${it.name}</span>
+                    ${it.expand ? `<button class="t-expand-btn" aria-expanded="false" aria-label="展開交通細項">▾</button>` : ""}
                 </div>
                 ${it.note ? `<p class="t-note">${it.note}</p>` : ""}
+                ${it.expand !== undefined ? `
+                <div class="t-expand-body" aria-hidden="true">
+                    <p class="t-expand-text">${it.expand}</p>
+                </div>` : ""}
             </div>
         </div>
     `
@@ -311,3 +316,12 @@ function switchToSaved() {
   savedPanel.classList.add("active")
   scrollToNav()
 }
+
+/* ── EXPAND / COLLAPSE ── */
+mainEl.addEventListener("click", (e) => {
+  const card = e.target.closest(".t-card.has-expand")
+  if (!card) return
+  const expanded = card.classList.toggle("expanded")
+  card.querySelector(".t-expand-btn").setAttribute("aria-expanded", expanded)
+  card.querySelector(".t-expand-body").setAttribute("aria-hidden", !expanded)
+})
