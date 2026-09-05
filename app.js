@@ -51,7 +51,7 @@ trip.days.forEach((d, i) => {
       (it) => `
         <div class="timeline-item">
             <div class="t-dot${it.hi ? " highlight" : ""}"></div>
-            <div class="t-card${it.expand ? " has-expand" : ""}${it.mapUrl ? " has-map" : ""}" ${it.mapUrl ? `data-map="${it.mapUrl}"` : ""}>
+            <${it.mapUrl ? `a href="${it.mapUrl}" target="_blank" rel="noopener"` : "div"} class="t-card${it.expand ? " has-expand" : ""}${it.mapUrl ? " has-map" : ""}">
                 <div class="t-card-top">
                     <span class="t-time">${it.time}</span>
                     <span class="t-icon">${it.icon}</span>
@@ -61,9 +61,9 @@ trip.days.forEach((d, i) => {
                 ${it.note ? `<p class="t-note">${it.note}</p>` : ""}
                 ${it.expand !== undefined ? `
                 <div class="t-expand-body" aria-hidden="true">
-                    <p class="t-expand-text">${it.expand}</p>
+                    <p class="t-expand-text">${it.expand.replace(/\n/g, "<br>")}</p>
                 </div>` : ""}
-            </div>
+            </${it.mapUrl ? "a" : "div"}>
         </div>
     `
     )
@@ -324,11 +324,4 @@ mainEl.addEventListener("click", (e) => {
   const expanded = card.classList.toggle("expanded")
   card.querySelector(".t-expand-btn").setAttribute("aria-expanded", expanded)
   card.querySelector(".t-expand-body").setAttribute("aria-hidden", !expanded)
-})
-
-/* ── MAP LINK ── */
-mainEl.addEventListener("click", (e) => {
-  const card = e.target.closest(".t-card.has-map")
-  if (!card) return
-  window.open(card.dataset.map, "_blank", "noopener")
 })
