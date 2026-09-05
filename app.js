@@ -51,7 +51,7 @@ trip.days.forEach((d, i) => {
       (it) => `
         <div class="timeline-item">
             <div class="t-dot${it.hi ? " highlight" : ""}"></div>
-            <div class="t-card${it.expand ? " has-expand" : ""}">
+            <div class="t-card${it.expand ? " has-expand" : ""}${it.mapUrl ? " has-map" : ""}" ${it.mapUrl ? `data-map="${it.mapUrl}"` : ""}>
                 <div class="t-card-top">
                     <span class="t-time">${it.time}</span>
                     <span class="t-icon">${it.icon}</span>
@@ -324,4 +324,11 @@ mainEl.addEventListener("click", (e) => {
   const expanded = card.classList.toggle("expanded")
   card.querySelector(".t-expand-btn").setAttribute("aria-expanded", expanded)
   card.querySelector(".t-expand-body").setAttribute("aria-hidden", !expanded)
+})
+
+/* ── MAP LINK ── */
+mainEl.addEventListener("click", (e) => {
+  const card = e.target.closest(".t-card.has-map")
+  if (!card) return
+  window.open(card.dataset.map, "_blank", "noopener")
 })

@@ -293,21 +293,6 @@
         padding-left: 3rem;
       }
 
-      /* the rail */
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 0.7rem;
-        top: 1.2rem;
-        bottom: 1.2rem;
-        width: 2px;
-        background: linear-gradient(
-          to bottom,
-          var(--accent) 0%,
-          rgba(194, 67, 110, 0.3) 70%,
-          rgba(194, 67, 110, 0.05) 100%
-        );
-      }
 
       .timeline-item {
         position: relative;
@@ -341,10 +326,6 @@
           background 0.2s;
       }
 
-      .t-card:hover {
-        border-color: rgba(240, 165, 0, 0.18);
-        background: var(--bg-hover);
-      }
 
       .t-card-top {
         display: flex;
@@ -658,7 +639,8 @@
       }
 
       /* ─── EXPAND / COLLAPSE ─── */
-      .t-card.has-expand {
+      .t-card.has-expand,
+      .t-card.has-map {
         cursor: pointer;
       }
 
@@ -693,12 +675,12 @@
           margin-top 0.25s ease;
       }
       .t-card.expanded .t-expand-body {
-        max-height: 400px;
+        max-height: 2000px;
         margin-top: 0.65rem;
       }
 
       .t-expand-text {
-        font-size: 0.78rem;
+        font-size: 0.97rem;
         color: var(--text-2);
         line-height: 1.7;
         padding-top: 0.55rem;
@@ -733,8 +715,6 @@
   <body>
     <!-- HERO -->
     <header class="hero">
-      <div class="hero-watermark" aria-hidden="true">大阪</div>
-      <h1 class="hero-title">大阪</h1>
       <div class="extra-tags" id="extraTags"></div>
     </header>
 
