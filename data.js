@@ -159,102 +159,89 @@ const trip = {
           icon: "🚇",
           name: "南海難波轉乘地鐵 → 大國町站",
           expand:
-            "1. 電車抵達南海難波站後，請順著月台上的大看板，朝 「3F 北改札口（北出口）」 的方向走\n\n2. 刷卡出閘門 ➔ 立刻會看到超長手扶 \n\n3. 正前方就會看到通往樓下的一長串大走廊與手扶梯，上方有大字標示紅色圓圈「M」：Osaka Metro 御堂筋線 \n\n4. 搭手扶梯一路下到「B1 地下街」\n\n5. 到了 B1 後，抬頭順著紅色 M 標誌往前直走約 1～2 分鐘，右手邊就會看到 御堂筋線 なんば駅 的 「南南改札口」（或「南改札口」\n\n5. 進閘門後搭手扶梯／電梯下到月台：請認明 「1 號月台」（往 天王寺／中百舌鳥 方向）\n\n6. 上車後只要搭乘 1 站（車程約 2 分鐘），聽到廣播 「Daiko-kucho（大國町）」 下車就到了"
+            "1. 電車抵達南海難波站後，請順著月台上的大看板，朝 「3F 北改札口（北出口）」 的方向走\n\n2. 刷卡出閘門 ➔ 立刻會看到超長手扶 \n\n3. 正前方就會看到通往樓下的一長串大走廊與手扶梯，上方有大字標示紅色圓圈「M」：Osaka Metro 御堂筋線 \n\n4. 搭手扶梯一路下到「B1 地下街」\n\n5. 到了 B1 後，抬頭順著紅色 M 標誌往前直走約 1～2 分鐘，右手邊就會看到 御堂筋線 なんば駅 的 「南南改札口」（或「南改札口」\n\n5. 進閘門後搭手扶梯／電梯下到月台：請認明 「1 號月台」（往 天王寺／中百舌鳥 方向）\n\n6. 上車後只要搭乘 1 站（車程約 2 分鐘），聽到廣播 「Daiko-kucho（大國町）」 下車就到了\n\n7. 三號出口"
         },
-        { time: "20:15", icon: "🏨", name: "飯店 Check-in", note: "住一難波南3號店", mapUrl: "https://maps.app.goo.gl/RWkgKKbw43bXrVZc6" }
+        {
+          time: "20:15",
+          icon: "🏨",
+          name: "飯店 Check-in",
+          note: "住一難波南3號店",
+          mapUrl: "https://maps.app.goo.gl/RWkgKKbw43bXrVZc6"
+        }
       ]
     },
     {
       date: "10/2",
       wd: "Fri",
-      title: "大阪城と黒門市場",
+      title: "環球影城",
       tag: "Day 2",
       items: [
-        { time: "09:00", icon: "☕", name: "早餐", note: "飯店早餐或附近昭和風喫茶店" },
-        { time: "10:00", icon: "🏯", name: "大阪城公園", note: "天守閣入場 ¥600 · 秋天楓紅美景 · 建議留2-3小時" },
         {
-          time: "13:00",
-          icon: "🥩",
-          name: "午餐：黒門市場",
-          note: "大阪の廚房 · 海鮮串、松阪牛一口サイズ、新鮮水果",
-          hi: true
+          time: "07:30",
+          icon: "🎢",
+          name: "出發環球影城",
+          note: "",
+          expand:
+            "1. 走路10分鐘，到新今公JR\n\n2. 往西九條大阪方向(上車搭10分鐘)\n\n3. 到了西九條下車轉搭 JR 夢咲線（櫻島線）\n\n4. 搭到環球城站（Universal-City Station）下車"
         },
-        { time: "15:00", icon: "🛍️", name: "心斎橋筋商店街", note: "藥妝・雜貨・流行品牌 · 全長580m有頂拱廊" },
-        { time: "17:30", icon: "☕", name: "カフェ休息", note: "心斎橋一帶不少設計感咖啡廳" },
-        { time: "19:00", icon: "🍜", name: "晚餐：千日前道具屋筋附近", note: "大衆割烹 or 居酒屋一品料理體驗" }
+        { time: "08:30", icon: "🎡", name: "抵達環球影城", note: "", hi: true },
+        {
+          time: "21:00",
+          icon: "🌙",
+          name: "離開環球影城",
+          note: "",
+          expand:
+            "1. 搭乘 JR 夢咲線（櫻島線）至 西九條站下車\n\n2. 西九條站轉乘 JR 大阪環狀線（往內回方向，經大正、弁天町）至 新今宮站"
+        },
+        {
+          time: "21:30",
+          icon: "🏨",
+          name: "抵達飯店",
+          note: "住一難波南3號店",
+          mapUrl: "https://maps.app.goo.gl/RWkgKKbw43bXrVZc6"
+        }
       ]
     },
     {
       date: "10/3",
       wd: "Sat",
-      title: "天王寺と新世界",
+      title: "心齋橋・道頓堀",
       tag: "Day 3",
       items: [
-        { time: "09:30", icon: "⛩️", name: "住吉大社", note: "大阪最古老神社 · 太鼓橋上拍照超好看" },
-        { time: "11:30", icon: "🌳", name: "天王寺公園", note: "市中心的綠洲 · 順遊天王寺動物園（可選）" },
-        { time: "13:00", icon: "🗼", name: "通天閣・新世界", note: "昭和30年代復古街道 · 強烈推薦！", hi: true },
-        { time: "14:00", icon: "🍢", name: "午餐：元祖串カツ", note: "二度漬け禁止！用豬肉高湯醬炸串體驗" },
-        {
-          time: "16:00",
-          icon: "🏙️",
-          name: "あべのハルカス",
-          note: "日本最高百貨 · 58F 展望台 ¥2,000 · 日落前入場最值"
-        },
-        { time: "19:00", icon: "🍺", name: "晚餐：居酒屋", note: "天王寺附近找下班族聚集的熱鬧小店" }
+        { time: "10:00", icon: "🛍️", name: "心齋橋", note: "", hi: true },
+        { time: "14:00", icon: "🌉", name: "道頓堀", note: "", hi: true }
       ]
     },
     {
       date: "10/4",
       wd: "Sun",
-      title: "梅田・北大阪",
+      title: "京都",
       tag: "Day 4",
       items: [
-        { time: "10:00", icon: "🏬", name: "梅田 Grand Front Osaka", note: "設計感強烈的複合商場 · 文創品牌集中" },
-        { time: "12:00", icon: "🍛", name: "午餐：梅田地下街", note: "Whity 梅田 · 龐大地下街美食迷宮探索" },
-        { time: "13:30", icon: "🎡", name: "HEP FIVE 摩天輪", note: "梅田地標 · ¥600 · 俯瞰大阪市景", hi: true },
-        { time: "15:00", icon: "🛍️", name: "茶屋町 LOFT / 蔦屋書店", note: "文具・生活雜貨・設計小物，可以逛很久" },
-        { time: "16:30", icon: "🏨", name: "換飯店 Check-in", note: "Cross Hotel Osaka · 心斎橋・長堀橋據點" },
-        { time: "19:00", icon: "🍷", name: "晚餐：北新地", note: "大阪高端飲食區 · 小酒館氛圍完全不同" }
+        { time: "09:00", icon: "🏯", name: "前往京都", note: "", expand: "" }
       ]
     },
     {
       date: "10/5",
       wd: "Mon",
-      title: "Universal Studios Japan",
+      title: "大阪城・通天閣・勝尾寺",
       tag: "Day 5",
       items: [
-        { time: "08:00", icon: "🎢", name: "提早出發 USJ", note: "開園前30分鐘到場！旺季必備", hi: true },
-        { time: "08:30", icon: "⚡", name: "哈利波特魔法世界", note: "奥比旺・魔法柺杖互動 · 霍格茲啤酒必喝" },
-        { time: "11:00", icon: "🦕", name: "Jurassic Park & 主要設施", note: "善用 EXPRESS PASS 或排隊策略" },
-        { time: "13:00", icon: "🌭", name: "園內午餐", note: "Three Broomsticks（哈利波特區）or Mel's Drive-In" },
-        { time: "14:30", icon: "🎭", name: "下午遊玩", note: "Minion Park · Hollywood 區 · 確認當日表演時刻" },
-        {
-          time: "19:00",
-          icon: "🌙",
-          name: "夜間遊行 & 煙火",
-          note: "10月特殊活動季，確認當天 night show 節目表",
-          hi: true
-        },
-        { time: "21:00", icon: "🍜", name: "離園，宵夜", note: "難波或環球城周邊找宵夜補充體力" }
+        { time: "09:00", icon: "🏯", name: "大阪城", note: "", hi: true },
+        { time: "13:00", icon: "🗼", name: "通天閣", note: "" },
+        { time: "16:00", icon: "⛩️", name: "勝尾寺", note: "", hi: true }
       ]
     },
     {
       date: "10/6",
       wd: "Tue",
-      title: "最後の大阪・回家",
+      title: "回家",
       tag: "Day 6",
       items: [
-        { time: "09:00", icon: "🌅", name: "清晨道頓堀散步", note: "人潮最少，氛圍最美的道頓堀在清晨" },
-        { time: "10:30", icon: "🛍️", name: "心斎橋最後購物衝刺", note: "藥妝・零食伴手禮・漏買的都在這補齊" },
-        { time: "12:00", icon: "🏨", name: "飯店 Check-out", note: "行李寄放或直接帶往機場" },
-        { time: "13:00", icon: "🍱", name: "最後の一餐", note: "好好享用最後一頓大阪美食，不要趕", hi: true },
-        {
-          time: "15:00",
-          icon: "🚄",
-          name: "前往關西機場",
-          note: "南海電鐵 Rapi:t 特急 · 難波出發 · 約45分 · 請提早！"
-        },
-        { time: "18:00", icon: "✈️", name: "起飛回台", note: "MM928 · 再見，大阪 👋" }
+        { time: "06:30", icon: "🏨", name: "飯店 Check-out", note: "退房・整理行李" },
+        { time: "07:00", icon: "🚃", name: "前往關西機場", note: "南海電鐵 Rapi:t 特急 · 難波出發 · 約 45 分", expand: "" },
+        { time: "08:00", icon: "🛫", name: "抵達關西機場", note: "辦理登機・行李托運", hi: true },
+        { time: "10:45", icon: "✈️", name: "起飛回台", note: "MM031 · 再見，大阪" }
       ]
     }
   ]
