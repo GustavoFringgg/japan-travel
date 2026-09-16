@@ -82,12 +82,13 @@ const trip = {
       cards: [
         {
           icon: "🚇",
-          label: "住吉大社・天王寺・新世界",
-          badge: "地鐵 + 阪堺電車",
+          label: "難波八阪・大阪城・心齋橋・道頓堀",
+          badge: "地鐵為主",
           rows: [
-            { label: "飯店 → 住吉大社", val: "大國町站 → 天王寺站（御堂筋線）→ 阪堺電車 → 住吉大社前（約 40 分）" },
-            { label: "住吉大社 → 天王寺", val: "阪堺電車 → 天王寺駅前（約 25 分）" },
-            { label: "天王寺 → 新世界", val: "步行約 10 分 or 地鐵動物園前站 1 站" }
+            { label: "飯店 → 難波八阪神社", val: "大國町站步行 or 地鐵至難波站（約 10～15 分）" },
+            { label: "難波八阪神社 → 大阪城", val: "難波站 → 谷町四丁目站（谷町線）・約 15 分" },
+            { label: "大阪城 → 心齋橋", val: "谷町四丁目站 → 心齋橋站（長堀鶴見綠地線）・約 10 分" },
+            { label: "心齋橋 → 道頓堀", val: "步行約 5～10 分" }
           ]
         }
       ]
@@ -146,7 +147,7 @@ const trip = {
       tag: "Day 1",
       items: [
         { time: "14:10", icon: "✈️", name: "高雄機場出發", note: "MM032 · 建議提前2小時辦理登機" },
-        { time: "18:15", icon: "🛬", name: "抵達關西機場 T2", note: "入境 → 提取行李", hi: true },
+        { time: "18:15", icon: "🛬", name: "抵達關西機場 T2", note: "入境 → 提取行李" },
         {
           time: "19:00",
           icon: "🚃",
@@ -184,7 +185,7 @@ const trip = {
           expand:
             "1. 走路10分鐘，到新今公JR\n\n2. 往西九條大阪方向(上車搭10分鐘)\n\n3. 到了西九條下車轉搭 JR 夢咲線（櫻島線）\n\n4. 搭到環球城站（Universal-City Station）下車"
         },
-        { time: "08:30", icon: "🎡", name: "抵達環球影城", note: "", hi: true },
+        { time: "08:30", icon: "🎡", name: "抵達環球影城", note: "" },
         {
           time: "21:00",
           icon: "🌙",
@@ -205,11 +206,28 @@ const trip = {
     {
       date: "10/3",
       wd: "Sat",
-      title: "心齋橋・道頓堀",
+      title: "難波八阪・大阪城・心齋橋・道頓堀",
       tag: "Day 3",
       items: [
-        { time: "10:00", icon: "🛍️", name: "心齋橋", note: "", hi: true },
-        { time: "14:00", icon: "🌉", name: "道頓堀", note: "", hi: true }
+        { time: "09:00", icon: "⛩️", name: "八阪神社-難波", note: "" },
+        { time: "10:30", icon: "🏯", name: "大阪城", note: "" },
+        {
+          time: "12:30",
+          icon: "🍱",
+          name: "Shake Shake 漢堡",
+          note: "",
+          mapUrl: "https://maps.app.goo.gl/BPVZjmZpSzAVfMwU8",
+          expand: "營業時間: 10:00-21:30"
+        },
+        { time: "14:00", icon: "🛍️", name: "心齋橋", note: "" },
+        { time: "16:00", icon: "🌉", name: "道頓堀", note: "" },
+        {
+          time: "20:15",
+          icon: "🍱",
+          name: "Enya Namba 串燒",
+          note: "",
+          mapUrl: "https://maps.app.goo.gl/BB28FCp2P1GcTrhY6"
+        }
       ]
     },
     {
@@ -219,18 +237,18 @@ const trip = {
       tag: "Day 4",
       items: [
         { time: "07:30", icon: "🚃", name: "出門", note: "" },
-        { time: "08:45", icon: "🏯", name: "抵達清水寺", note: "", hi: true },
+        { time: "08:45", icon: "🏯", name: "抵達清水寺", note: "" },
         { time: "11:00", icon: "🎋", name: "三年坂（產寧坂）→ 二年坂", note: "" },
         { time: "12:30", icon: "🍱", name: "中餐", note: "" },
-        { time: "14:00", icon: "⛩️", name: "八坂神社", note: "", hi: true },
+        { time: "14:00", icon: "⛩️", name: "八坂神社", note: "" },
         { time: "15:30", icon: "🌸", name: "祇園、花見小路 → 鴨川傍晚散步", note: "" },
-        { time: "19:00", icon: "🚃", name: "返程回大國町", note: "" }
+        { time: "19:20", icon: "🌸", name: "通天閣", note: "" }
       ]
     },
     {
       date: "10/5",
       wd: "Mon",
-      title: "勝尾寺・大阪城・通天閣",
+      title: "勝尾寺・通天閣",
       tag: "Day 5",
       items: [
         {
@@ -241,7 +259,7 @@ const trip = {
           expand:
             "1. 出發站：大國町站 \n\n2. 搭乘路線：Osaka Metro 御堂筋線（「箕面萱野」方向）\n\n3. 下車站：箕面萱野站（車程約 37 分鐘）"
         },
-        { time: "09:20", icon: "⛩️", name: "抵達勝尾寺", note: "", hi: true },
+        { time: "09:20", icon: "⛩️", name: "抵達勝尾寺", note: "" },
         {
           time: "12:45",
           icon: "🍖",
@@ -249,8 +267,8 @@ const trip = {
           note: "",
           mapUrl: "https://maps.app.goo.gl/N27sZgnnZwqVPX9Z6"
         },
-        { time: "13:00", icon: "🏯", name: "大阪城", note: "", hi: true },
-        { time: "16:30", icon: "🗼", name: "通天閣", note: "" }
+        { time: "14:00", icon: "🏨", name: " 梅田 HEP百貨 ", note: "" },
+        { time: "18:15", icon: "🌸", name: "  植物園 teamLab", note: "" }
       ]
     },
     {
@@ -267,7 +285,7 @@ const trip = {
           note: "南海電鐵 Rapi:t 特急 · 難波出發 · 約 45 分",
           expand: ""
         },
-        { time: "08:45", icon: "🛫", name: "抵達關西機場", note: "辦理登機・行李托運", hi: true },
+        { time: "7:45", icon: "🛫", name: "抵達關西機場", note: "辦理登機・行李托運" },
         { time: "10:45", icon: "✈️", name: "起飛回台", note: "MM031 · 再見，大阪" }
       ]
     }

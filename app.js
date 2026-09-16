@@ -50,12 +50,12 @@ trip.days.forEach((d, i) => {
     .map(
       (it) => `
         <div class="timeline-item">
-            <div class="t-dot${it.hi ? " highlight" : ""}"></div>
-            <${it.mapUrl ? `a href="${it.mapUrl}"` : "div"} class="t-card${it.expand ? " has-expand" : ""}${it.mapUrl ? " has-map" : ""}">
+            <div class="t-dot"></div>
+            <div class="t-card${it.expand ? " has-expand" : ""}">
                 <div class="t-card-top">
                     <span class="t-time">${it.time}</span>
                     <span class="t-icon">${it.icon}</span>
-                    <span class="t-name">${it.name}</span>
+                    ${it.mapUrl ? `<a class="t-name" href="${it.mapUrl}" target="_blank" rel="noopener">${it.name}</a>` : `<span class="t-name">${it.name}</span>`}
                     ${it.expand ? `<button class="t-expand-btn" aria-expanded="false" aria-label="展開交通細項">▾</button>` : ""}
                 </div>
                 ${it.note ? `<p class="t-note">${it.note}</p>` : ""}
@@ -63,7 +63,7 @@ trip.days.forEach((d, i) => {
                 <div class="t-expand-body" aria-hidden="true">
                     <p class="t-expand-text">${it.expand.replace(/\n/g, "<br>")}</p>
                 </div>` : ""}
-            </${it.mapUrl ? "a" : "div"}>
+            </div>
         </div>
     `
     )
@@ -319,6 +319,7 @@ function switchToSaved() {
 
 /* ── EXPAND / COLLAPSE ── */
 mainEl.addEventListener("click", (e) => {
+  if (e.target.closest("a.t-name")) return
   const card = e.target.closest(".t-card.has-expand")
   if (!card) return
   const expanded = card.classList.toggle("expanded")

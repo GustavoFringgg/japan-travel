@@ -311,11 +311,6 @@
         transition: box-shadow 0.2s;
       }
 
-      .t-dot.highlight {
-        background: var(--accent);
-        box-shadow: 0 0 0 3px rgba(194, 67, 110, 0.2);
-      }
-
       .t-card {
         display: block;
         background: var(--bg-card);
@@ -642,8 +637,14 @@
       }
 
       /* ─── EXPAND / COLLAPSE ─── */
-      .t-card.has-expand,
-      .t-card.has-map {
+      .t-card.has-expand {
+        cursor: pointer;
+      }
+
+      a.t-name {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
         cursor: pointer;
       }
 
