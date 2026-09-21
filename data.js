@@ -236,10 +236,23 @@ const trip = {
       title: "京都・清水寺・祇園",
       tag: "Day 4",
       items: [
-        { time: "07:30", icon: "🚃", name: "出門", note: "" },
+        {
+          time: "07:30",
+          icon: "🚃",
+          name: "出門",
+          note: "",
+          expand:
+            "用西瓜卡即可\n1. 搭乘 Osaka Metro 御堂筋線：從 大國町站 搭乘御堂筋線（往新大阪／千里中央方向）至 淀屋桥\n\n2.轉乘京阪電車（京阪本線）：站內依指標轉乘 京阪本線。搭乘 特急 列車（往出町柳方向），至七條站下車，不要換月台直接等下一台<準急、區間急行、普通車>上車到清水五条（車程約 50～55 分鐘）\n\n3.攔計程車上清水寺"
+        },
         { time: "08:45", icon: "🏯", name: "抵達清水寺", note: "" },
         { time: "11:00", icon: "🎋", name: "三年坂（產寧坂）→ 二年坂", note: "" },
-        { time: "12:30", icon: "🍱", name: "中餐", note: "" },
+        {
+          time: "12:30",
+          icon: "🍱",
+          name: "炭燒鰻 土井活鰻 祇園八坂店",
+          note: "",
+          mapUrl: "https://maps.app.goo.gl/14A7PYBA5Phegpab7"
+        },
         { time: "14:00", icon: "⛩️", name: "八坂神社", note: "" },
         { time: "15:30", icon: "🌸", name: "祇園、花見小路 → 鴨川傍晚散步", note: "" },
         { time: "19:20", icon: "🌸", name: "通天閣", note: "" }
