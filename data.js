@@ -244,7 +244,7 @@ const trip = {
         {
           time: "14:00",
           icon: "🛍️",
-          name: "心齋橋",
+          name: "心齋橋 / Uniqlo Shinsaibashi / GU",
           note: "",
           expand: "建議由北向南漫步逛街，一路往戎橋與道頓堀方向前進"
         },
