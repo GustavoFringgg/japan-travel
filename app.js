@@ -50,7 +50,6 @@ trip.days.forEach((d, i) => {
     .map(
       (it) => `
         <div class="timeline-item">
-            <div class="t-dot"></div>
             <div class="t-card${it.expand ? " has-expand" : ""}">
                 <div class="t-card-top">
                     <span class="t-time">${it.time}</span>
