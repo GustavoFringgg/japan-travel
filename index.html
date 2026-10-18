@@ -33,18 +33,25 @@
       }
 
       body {
-        background: var(--bg);
+        background:
+          linear-gradient(rgba(238, 243, 247, 0.55), rgba(238, 243, 247, 0.65)),
+          url("assets/bg-kitakyushu-mojiko.png") center / cover no-repeat fixed;
         color: var(--text);
         font-family: "DM Sans", "Noto Serif JP", sans-serif;
         min-height: 100vh;
         overflow-x: hidden;
       }
 
+      @media (max-width: 560px) {
+        body {
+          background-attachment: scroll;
+        }
+      }
+
       /* ─── HERO ─── */
       .hero {
         position: relative;
-        padding: 0.5rem 2rem;
-        text-align: center;
+        padding: 0.5rem 0;
         overflow: hidden;
       }
 
@@ -162,12 +169,31 @@
         transition: color 0.18s;
       }
 
-      /* ─── EXTRA TAGS (below hero) ─── */
+      /* ─── HERO ROW (label + extra tags) ─── */
+      .hero-row {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+
+      .hero-label {
+        font-family: "Noto Serif JP", serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
       .extra-tags {
         display: flex;
-        justify-content: center;
         gap: 0.6rem;
-        margin-top: 1.25rem;
+        flex-wrap: wrap;
       }
 
       .extra-tag {
@@ -680,6 +706,13 @@
 
       /* ─── RESPONSIVE ─── */
       @media (max-width: 560px) {
+        .hero-row {
+          padding: 0 0.9rem;
+        }
+        .hero-label {
+          font-size: 0.82rem;
+          width: 100%;
+        }
         .main {
           padding: 2rem 1.1rem 4rem;
         }
@@ -696,7 +729,10 @@
   <body>
     <!-- HERO -->
     <header class="hero">
-      <div class="extra-tags" id="extraTags"></div>
+      <div class="hero-row">
+        <span class="hero-label">北九州之旅</span>
+        <div class="extra-tags" id="extraTags"></div>
+      </div>
     </header>
 
     <!-- NAV -->

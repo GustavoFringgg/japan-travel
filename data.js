@@ -62,7 +62,56 @@ const trip = {
         { time: "03:00", icon: "✈️", name: "桃園機場 T1 出發", note: "7G800 · 星悅航空" },
         { time: "06:15", icon: "🛬", name: "抵達北九州機場", note: "入境 → 提取行李" },
         {
+          time: "08:00",
+          icon: "🍳",
+          name: "洋食咖啡廳",
+          note: "早餐",
+          mapUrl: "https://maps.app.goo.gl/DHsLESCSjindTCbW9"
+        },
+        {
+          time: "09:30",
+          icon: "🏯",
+          name: "小倉城",
+          note: ""
+        },
+        {
+          time: "12:00",
+          icon: "🍜",
+          name: "旦過市場",
+          note: "午餐"
+        },
+        {
+          time: "13:00",
+          icon: "🚃",
+          name: "前往門司港",
+          expand: "小倉駅 → 門司港駅・JR 鹿兒島本線約 13～15 分"
+        },
+        {
+          time: "13:20",
+          icon: "⚓",
+          name: "門司港懷舊區",
+          note: "門司港レトロ散策・舊門司三井俱樂部・懷舊展望台"
+        },
+        {
           time: "15:00",
+          icon: "🚠",
+          name: "前往皿倉山展望台",
+          expand: "門司港駅 → JR八幡駅（鹿兒島本線約 20～25 分）→ 轉乘巴士／計程車至帆柱纜車山麓站（約 10～15 分）→ 搭纜車＋斜行電梯上山"
+        },
+        {
+          time: "16:00",
+          icon: "🌆",
+          name: "皿倉山展望台",
+          note: "新日本三大夜景之一・11 月日落約 17:15，建議留到天黑看夜景"
+        },
+        {
+          time: "18:30",
+          icon: "🚃",
+          name: "返回小倉",
+          expand: "原路搭纜車下山 → 轉乘 JR 回小倉駅・總車程約 40～50 分"
+        },
+        {
+          time: "19:30",
           icon: "🏨",
           name: "飯店 Check-in",
           note: "Quintessa Hotel Kokura",
