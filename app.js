@@ -73,7 +73,7 @@ trip.days.forEach((d, i) => {
             <div class="day-big-date">${d.date}</div>
             <div class="day-title-wrap">
                 <div class="day-title">${d.title}</div>
-                <div class="day-sub">${d.wd} · October 2026</div>
+                <div class="day-sub">${d.wd} · November 2026</div>
             </div>
             <span class="day-pill">${d.tag}</span>
         </div>
@@ -143,8 +143,8 @@ flightPanel.className = "saved-panel"
 flightPanel.setAttribute("role", "tabpanel")
 flightPanel.innerHTML = `
     <div class="info-grid">
-        ${flightCard(trip.flights.out, "去程", "10/1")}
-        ${flightCard(trip.flights.ret, "回程", "10/6")}
+        ${flightCard(trip.flights.out, "去程", "11/2")}
+        ${flightCard(trip.flights.ret, "回程", "11/6")}
     </div>
 `
 mainEl.appendChild(flightPanel)
