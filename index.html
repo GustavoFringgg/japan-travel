@@ -33,18 +33,29 @@
       }
 
       body {
-        background:
-          linear-gradient(rgba(238, 243, 247, 0.55), rgba(238, 243, 247, 0.65)),
-          url("assets/bg-kitakyushu-mojiko.png") center / cover no-repeat fixed;
+        background: var(--bg);
         color: var(--text);
         font-family: "DM Sans", "Noto Serif JP", sans-serif;
         min-height: 100vh;
         overflow-x: hidden;
       }
 
+      /* 固定於視窗大小的背景層（不是整頁高度），手機直式長頁面才不會被拉伸裁切 */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(rgba(238, 243, 247, 0.55), rgba(238, 243, 247, 0.65)),
+          url("assets/bg-kitakyushu-mojiko.png") center 38% / cover no-repeat;
+      }
+
       @media (max-width: 560px) {
-        body {
-          background-attachment: scroll;
+        body::before {
+          background-size: contain; /* ← 這裡改成你要的值，例如 70% 或 contain */
+          background-position: top center;
+          background-color: var(--bg);
         }
       }
 
@@ -318,7 +329,6 @@
         position: relative;
       }
 
-
       .timeline-item {
         position: relative;
         margin-bottom: 1rem;
@@ -336,7 +346,6 @@
         color: inherit;
         text-decoration: none;
       }
-
 
       .t-card-top {
         display: flex;
