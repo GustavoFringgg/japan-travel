@@ -26,12 +26,12 @@ const trip = {
   },
   hotels: [
     {
-      name: "Quintessa Hotel Kokura",
-      area: "小倉・北九州市",
+      name: "ホテルリブマックス小倉駅前",
+      area: "小倉駅前・北九州市",
       nights: "11/2 – 11/6",
       checkIn: "15:00",
       checkOut: "11:00",
-      mapUrl: "https://maps.app.goo.gl/nC5qbNxBngvEbnkZ6"
+      mapUrl: "https://maps.app.goo.gl/Z8LFR5oqbYv5KW6p7"
     }
   ],
   transit: [
@@ -69,37 +69,73 @@ const trip = {
           mapUrl: "https://maps.app.goo.gl/DHsLESCSjindTCbW9"
         },
         {
-          time: "09:30",
-          icon: "🏯",
-          name: "小倉城",
-          note: ""
-        },
-        {
-          time: "12:00",
-          icon: "🍜",
-          name: "旦過市場",
-          note: "午餐"
-        },
-        {
-          time: "13:00",
+          time: "09:00",
           icon: "🚃",
           name: "前往門司港",
           expand: "小倉駅 → 門司港駅・JR 鹿兒島本線約 13～15 分"
         },
         {
-          time: "13:20",
-          icon: "⚓",
-          name: "門司港懷舊區",
-          note: "門司港レトロ散策・舊門司三井俱樂部・懷舊展望台"
+          time: "09:20",
+          icon: "⛩️",
+          name: "甲宗八幡宮",
+          note: "門司港駅步行約 10 分"
         },
         {
-          time: "15:00",
+          time: "09:35",
+          icon: "🚶",
+          name: "前往和布刈神社",
+          expand: "沿關門海峽步道北行，約 15 分"
+        },
+        {
+          time: "09:50",
+          icon: "⛩️",
+          name: "和布刈神社",
+          note: "位於關門海峽岬・和布刈公園，日本遺產景點"
+        },
+        {
+          time: "10:05",
+          icon: "🚶",
+          name: "前往關門隧道人道入口",
+          expand: "步行約 5 分，鄰近和布刈公園・御裳川公園"
+        },
+        {
+          time: "10:15",
+          icon: "🕳️",
+          name: "關門海底隧道（人道）",
+          note: "步行穿越隧道至下關側・全長約 780 公尺，約 15 分，跨越福岡／山口縣界"
+        },
+        {
+          time: "10:30",
+          icon: "🚌",
+          name: "搭巴士到唐戶市場",
+          expand: "隧道下關側出口 → 唐戶市場，約 10 分鐘車程"
+        },
+        {
+          time: "11:00",
+          icon: "🐟",
+          name: "唐戶市場",
+          note: "午餐・新鮮海產・迴轉壽司"
+        },
+        {
+          time: "12:00",
+          icon: "⛩️",
+          name: "赤間神宮",
+          note: "唐戶市場步行約 5～10 分"
+        },
+        {
+          time: "12:30",
+          icon: "⛴️",
+          name: "搭船返回門司港",
+          expand: "關門汽船渡船・唐戶 → 門司港，約 5 分鐘航程"
+        },
+        {
+          time: "13:00",
           icon: "🚠",
           name: "前往皿倉山展望台",
           expand: "門司港駅 → JR八幡駅（鹿兒島本線約 20～25 分）→ 轉乘巴士／計程車至帆柱纜車山麓站（約 10～15 分）→ 搭纜車＋斜行電梯上山"
         },
         {
-          time: "16:00",
+          time: "14:00",
           icon: "🌆",
           name: "皿倉山展望台",
           note: "新日本三大夜景之一・11 月日落約 17:15，建議留到天黑看夜景"
@@ -114,8 +150,8 @@ const trip = {
           time: "19:30",
           icon: "🏨",
           name: "飯店 Check-in",
-          note: "Quintessa Hotel Kokura",
-          mapUrl: "https://maps.app.goo.gl/nC5qbNxBngvEbnkZ6"
+          note: "ホテルリブマックス小倉駅前",
+          mapUrl: "https://maps.app.goo.gl/Z8LFR5oqbYv5KW6p7"
         }
       ]
     },
