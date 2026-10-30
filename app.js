@@ -13,29 +13,29 @@ trip.days.forEach((d, i) => {
 
 const extraTagsEl = document.getElementById("extraTags")
 
-const savedBtn = document.createElement("button")
-savedBtn.className = "extra-tag"
-savedBtn.textContent = "收藏"
-savedBtn.addEventListener("click", switchToSaved)
-extraTagsEl.appendChild(savedBtn)
+const shrineBtn = document.createElement("button")
+shrineBtn.className = "extra-tag"
+shrineBtn.textContent = "神社"
+shrineBtn.addEventListener("click", () => switchToPanel(shrineBtn, shrinePanel))
+extraTagsEl.appendChild(shrineBtn)
 
-const hotelBtn = document.createElement("button")
-hotelBtn.className = "extra-tag"
-hotelBtn.textContent = "住宿"
-hotelBtn.addEventListener("click", switchToHotel)
-extraTagsEl.appendChild(hotelBtn)
+const souvenirBtn = document.createElement("button")
+souvenirBtn.className = "extra-tag"
+souvenirBtn.textContent = "伴手禮"
+souvenirBtn.addEventListener("click", () => switchToPanel(souvenirBtn, souvenirPanel))
+extraTagsEl.appendChild(souvenirBtn)
 
-const flightBtn = document.createElement("button")
-flightBtn.className = "extra-tag"
-flightBtn.textContent = "機票"
-flightBtn.addEventListener("click", switchToFlight)
-extraTagsEl.appendChild(flightBtn)
+const foodBtn = document.createElement("button")
+foodBtn.className = "extra-tag"
+foodBtn.textContent = "美食"
+foodBtn.addEventListener("click", () => switchToPanel(foodBtn, foodPanel))
+extraTagsEl.appendChild(foodBtn)
 
-const transitBtn = document.createElement("button")
-transitBtn.className = "extra-tag"
-transitBtn.textContent = "交通"
-transitBtn.addEventListener("click", switchToTransit)
-extraTagsEl.appendChild(transitBtn)
+const stayBtn = document.createElement("button")
+stayBtn.className = "extra-tag"
+stayBtn.textContent = "住宿/機票"
+stayBtn.addEventListener("click", () => switchToPanel(stayBtn, stayPanel))
+extraTagsEl.appendChild(stayBtn)
 
 /* ── RENDER DAYS ── */
 const mainEl = document.getElementById("mainContent")
@@ -137,134 +137,112 @@ function hotelCard(h) {
     </div>`
 }
 
-/* ── FLIGHT PANEL ── */
-const flightPanel = document.createElement("section")
-flightPanel.className = "saved-panel"
-flightPanel.setAttribute("role", "tabpanel")
-flightPanel.innerHTML = `
+/* ── HOTEL / FLIGHT PANEL ── */
+const stayPanel = document.createElement("section")
+stayPanel.className = "saved-panel"
+stayPanel.setAttribute("role", "tabpanel")
+stayPanel.innerHTML = `
+    <div class="info-grid">
+        ${hotelCard(trip.hotels[0])}
+    </div>
     <div class="info-grid">
         ${flightCard(trip.flights.out, "去程", "11/2")}
         ${flightCard(trip.flights.ret, "回程", "11/6")}
     </div>
 `
-mainEl.appendChild(flightPanel)
+mainEl.appendChild(stayPanel)
 
-/* ── HOTEL PANEL ── */
-const hotelPanel = document.createElement("section")
-hotelPanel.className = "saved-panel"
-hotelPanel.setAttribute("role", "tabpanel")
-hotelPanel.innerHTML = `
-    <div class="info-grid">
-        ${hotelCard(trip.hotels[0])}
-    </div>
-`
-mainEl.appendChild(hotelPanel)
+/* ── PLACES PANELS ── */
+const BOUGHT_KEY = "boughtItems"
 
-/* ── TRANSIT PANEL ── */
-const transitPanel = document.createElement("section")
-transitPanel.className = "saved-panel"
-transitPanel.setAttribute("role", "tabpanel")
-transitPanel.innerHTML = `
-    <div class="cat-pills" id="transitDayPills">
-        ${trip.transit.map((d, i) => `
-            <button class="cat-pill${i === 0 ? " active" : ""}" data-idx="${i}">${d.date}</button>
-        `).join("")}
-    </div>
-    <div class="info-grid" id="transitGrid"></div>
-`
-mainEl.appendChild(transitPanel)
-
-function renderTransit(idx) {
-  transitPanel.querySelectorAll(".cat-pill").forEach((p, i) => p.classList.toggle("active", i === idx))
-  document.getElementById("transitGrid").innerHTML = trip.transit[idx].cards.map(card => `
-    <div class="info-card">
-        <div class="info-card-head">
-            <span class="ic-icon">${card.icon}</span>
-            <span class="ic-label">${card.label}</span>
-            <span class="ic-badge">${card.badge}</span>
-        </div>
-        ${card.rows.map(r => `
-            <div class="info-row">
-                <span class="ir-label">${r.label}</span>
-                <span class="ir-val">${r.val}</span>
-            </div>
-        `).join("")}
-    </div>
-  `).join("")
+function loadBought() {
+  try {
+    return JSON.parse(localStorage.getItem(BOUGHT_KEY)) || {}
+  } catch {
+    return {}
+  }
 }
 
-renderTransit(0)
+function saveBought(bought) {
+  try {
+    localStorage.setItem(BOUGHT_KEY, JSON.stringify(bought))
+  } catch {}
+}
 
-transitPanel.querySelectorAll("#transitDayPills .cat-pill").forEach((pill, i) => {
-  pill.addEventListener("click", () => renderTransit(i))
-})
-
-/* ── SAVED PANEL ── */
-const savedPanel = document.createElement("section")
-savedPanel.className = "saved-panel"
-savedPanel.setAttribute("role", "tabpanel")
-savedPanel.innerHTML = `
-
-    <div class="cat-pills">
-        ${["全部", "美食", "玩樂", "景點"]
-          .map((c) => `<button class="cat-pill${c === "全部" ? " active" : ""}" data-cat="${c}">${c}</button>`)
-          .join("")}
-    </div>
-    <div class="meal-pills hidden" id="mealPills">
-        ${["全部", "早餐", "午餐", "晚餐", "甜點"]
-          .map((m) => `<button class="meal-pill${m === "全部" ? " active" : ""}" data-meal="${m}">${m}</button>`)
-          .join("")}
-    </div>
-    <div class="places-grid" id="placesGrid"></div>
-`
-mainEl.appendChild(savedPanel)
-
-const placesGrid = document.getElementById("placesGrid")
-
-function renderPlaces(cat, meal = "全部") {
-  savedPanel.querySelectorAll(".cat-pill").forEach((p) => p.classList.toggle("active", p.dataset.cat === cat))
-
-  const mealPillsEl = document.getElementById("mealPills")
-  if (cat === "美食") {
-    mealPillsEl.classList.remove("hidden")
-    mealPillsEl.querySelectorAll(".meal-pill").forEach((p) => p.classList.toggle("active", p.dataset.meal === meal))
-  } else {
-    mealPillsEl.classList.add("hidden")
-  }
-
-  let list = cat === "全部" ? savedPlaces : savedPlaces.filter((p) => p.cat === cat)
-  if (cat === "美食" && meal !== "全部") list = list.filter((p) => p.meal === meal)
-  placesGrid.innerHTML = list
+function placeCards(list, checkable) {
+  if (!list.length) return `<p class="place-note">尚未新增</p>`
+  const bought = loadBought()
+  return list
     .map((p) => {
-      const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.mapQuery)}`
+      const url = p.mapQuery && `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.mapQuery)}`
+      const isBought = checkable && bought[p.name]
       return `
-        <div class="place-card">
+        <div class="place-card${isBought ? " bought" : ""}">
+            ${p.img ? `<img class="place-img" src="${p.img}" alt="${p.name}" loading="lazy">` : ""}
             <div class="place-card-top">
                 <span class="place-name">${p.name}</span>
-                <span class="cat-badge cat-${p.cat}">${p.cat}</span>
             </div>
             ${p.note ? `<p class="place-note">${p.note}</p>` : ""}
-            <a href="${url}" target="_blank" rel="noopener" class="map-btn">在地圖查看 →</a>
+            ${url ? `<a href="${url}" target="_blank" rel="noopener" class="map-btn">在地圖查看 →</a>` : ""}
+            ${
+              checkable
+                ? `<button class="bought-btn" data-name="${p.name}" aria-pressed="${!!isBought}">${isBought ? "✓ 已買" : "標記已買"}</button>`
+                : ""
+            }
         </div>`
     })
     .join("")
 }
 
-renderPlaces("全部")
+// filters: 依 item.shop 篩選，預設選第一個
+function placesPanel(list, filters, checkable) {
+  const panel = document.createElement("section")
+  panel.className = "saved-panel"
+  panel.setAttribute("role", "tabpanel")
+  panel.innerHTML = `
+    ${
+      filters
+        ? `<div class="cat-pills">
+        ${filters.map((f, i) => `<button class="cat-pill${i === 0 ? " active" : ""}" data-shop="${f}">${f}</button>`).join("")}
+    </div>`
+        : ""
+    }
+    <div class="places-grid"></div>
+`
+  const grid = panel.querySelector(".places-grid")
 
-savedPanel.querySelectorAll(".cat-pill").forEach((pill) => {
-  pill.addEventListener("click", () => renderPlaces(pill.dataset.cat))
-})
+  function render(shop) {
+    panel.querySelectorAll(".cat-pill").forEach((p) => p.classList.toggle("active", p.dataset.shop === shop))
+    grid.innerHTML = placeCards(shop ? list.filter((p) => p.shop === shop) : list, checkable)
+  }
 
-document
-  .getElementById("mealPills")
-  .querySelectorAll(".meal-pill")
-  .forEach((pill) => {
-    pill.addEventListener("click", () => renderPlaces("美食", pill.dataset.meal))
+  panel.querySelectorAll(".cat-pill").forEach((pill) => {
+    pill.addEventListener("click", () => render(pill.dataset.shop))
   })
 
+  grid.addEventListener("click", (e) => {
+    const btn = e.target.closest(".bought-btn")
+    if (!btn) return
+    const bought = loadBought()
+    bought[btn.dataset.name] = !bought[btn.dataset.name]
+    saveBought(bought)
+    const isBought = bought[btn.dataset.name]
+    btn.closest(".place-card").classList.toggle("bought", isBought)
+    btn.setAttribute("aria-pressed", isBought)
+    btn.textContent = isBought ? "✓ 已買" : "標記已買"
+  })
+  render(filters && filters[0])
+
+  mainEl.appendChild(panel)
+  return panel
+}
+
+const shrinePanel = placesPanel(shrines)
+const souvenirPanel = placesPanel(souvenirs, ["博多車站", "唐吉訶德"], true)
+const foodPanel = placesPanel(foods)
+
 /* ── SWITCH ── */
-const extraPanels = [flightPanel, hotelPanel, transitPanel, savedPanel]
+const extraPanels = [stayPanel, shrinePanel, souvenirPanel, foodPanel]
 
 function deactivateAll() {
   document.querySelectorAll(".nav-tab").forEach((btn) => {
@@ -288,31 +266,10 @@ function switchDay(idx) {
   scrollToNav()
 }
 
-function switchToFlight() {
+function switchToPanel(btn, panel) {
   deactivateAll()
-  flightBtn.classList.add("active")
-  flightPanel.classList.add("active")
-  scrollToNav()
-}
-
-function switchToHotel() {
-  deactivateAll()
-  hotelBtn.classList.add("active")
-  hotelPanel.classList.add("active")
-  scrollToNav()
-}
-
-function switchToTransit() {
-  deactivateAll()
-  transitBtn.classList.add("active")
-  transitPanel.classList.add("active")
-  scrollToNav()
-}
-
-function switchToSaved() {
-  deactivateAll()
-  savedBtn.classList.add("active")
-  savedPanel.classList.add("active")
+  btn.classList.add("active")
+  panel.classList.add("active")
   scrollToNav()
 }
 

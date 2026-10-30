@@ -208,13 +208,14 @@
       }
 
       .extra-tag {
-        background: rgba(26, 95, 122, 0.07);
-        border: 1px solid rgba(26, 95, 122, 0.18);
+        background: var(--bg-card);
+        border: 1px solid rgba(26, 95, 122, 0.25);
         border-radius: 2rem;
         padding: 0.45rem 1.2rem;
         font-size: 0.78rem;
-        font-weight: 500;
-        color: var(--text-2);
+        font-weight: 600;
+        color: var(--accent);
+        box-shadow: 0 2px 8px rgba(21, 38, 47, 0.12);
         cursor: pointer;
         font-family: "DM Sans", sans-serif;
         transition: all 0.18s;
@@ -403,6 +404,9 @@
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 0.9rem;
       }
+      .info-grid + .info-grid {
+        margin-top: 0.9rem;
+      }
 
       .info-card {
         background: var(--bg-card);
@@ -523,13 +527,14 @@
       }
 
       .cat-pill {
-        background: none;
-        border: 1px solid var(--border);
+        background: var(--bg-card);
+        border: 1px solid rgba(26, 95, 122, 0.25);
         border-radius: 2rem;
         padding: 0.4rem 1.1rem;
         font-size: 0.76rem;
-        font-weight: 500;
-        color: var(--text-2);
+        font-weight: 600;
+        color: var(--accent);
+        box-shadow: 0 2px 8px rgba(21, 38, 47, 0.12);
         cursor: pointer;
         font-family: "DM Sans", sans-serif;
         transition: all 0.18s;
@@ -658,6 +663,43 @@
         opacity: 0.7;
       }
 
+      .place-img {
+        display: block;
+        width: calc(100% + 2.3rem);
+        margin: -1.1rem -1.15rem 0.35rem;
+        aspect-ratio: 5 / 4;
+        object-fit: cover;
+        border-radius: 0.75rem 0.75rem 0 0;
+        background: var(--bg-hover);
+      }
+
+
+      .bought-btn {
+        margin-top: 0.35rem;
+        padding: 0.45rem 0;
+        border: 1px solid rgba(26, 95, 122, 0.25);
+        border-radius: 0.5rem;
+        background: var(--bg-card);
+        color: var(--accent);
+        font-size: 0.74rem;
+        font-weight: 600;
+        font-family: "DM Sans", sans-serif;
+        cursor: pointer;
+        transition: all 0.18s;
+      }
+      .place-card.bought .bought-btn {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      .place-card.bought .place-img,
+      .place-card.bought .place-name {
+        opacity: 0.55;
+      }
+      .place-card.bought .place-name {
+        text-decoration: line-through;
+      }
+
       /* ─── EXPAND / COLLAPSE ─── */
       .t-card.has-expand {
         cursor: pointer;
@@ -724,6 +766,10 @@
         }
         .main {
           padding: 2rem 1.1rem 4rem;
+        }
+        .place-img {
+          aspect-ratio: auto;
+          height: 200px;
         }
         .t-note {
           padding-left: 0;
