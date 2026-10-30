@@ -345,6 +345,13 @@ const trip = {
           note: "JR博多City購物・鐵道展望台"
         },
         {
+          time: "17:30",
+          icon: "🦖",
+          name: "買哥吉拉",
+          note: "博多丸井 OIOI 百貨 2F",
+          mapUrl: "https://maps.app.goo.gl/oPjvkngHi4gujjjt6"
+        },
+        {
           time: "18:30",
           icon: "🍽️",
           name: "晚餐",
@@ -383,38 +390,79 @@ const shrines = [
   { name: "櫛田神社", note: "11/5・博多", mapQuery: "櫛田神社 博多" }
 ]
 
-// { name, note, shop: "博多車站" | "唐吉訶德", img?, mapQuery? }
+// { name, note, area: "博多車站" | "唐吉訶德", img?, mapQuery? }
 const souvenirs = [
   {
     name: "砂糖奶油樹 起司蛋糕口味",
     note: "シュガーバターサンドの木・ベイクドチーズケーキ・10 入",
-    shop: "博多車站",
+    area: "博多車站",
     img: "assets/souvenirs/s1.jpg"
   },
   {
     name: "砂糖奶油樹 焦糖布蕾口味",
     note: "シュガーバターサンドの木・キャラメルブリュレ・季節限定・7 入 ¥735",
-    shop: "博多車站",
+    area: "博多車站",
     img: "assets/souvenirs/s2.jpg"
   },
   {
     name: "砂糖奶油樹 甘王草莓奶油口味",
     note: "シュガーバターサンドの木・あまおう苺バター・博多限定",
-    shop: "博多車站",
+    area: "博多車站",
     img: "assets/souvenirs/s3.jpg"
   },
   {
     name: "PRESS BUTTER SAND 甘王草莓口味",
     note: "バターサンド〈あまおう苺〉・博多限定",
-    shop: "博多車站",
+    area: "博多車站",
     img: "assets/souvenirs/s4.jpg"
   },
   {
-    name: "茅乃舍 雞高湯包",
-    note: "茅乃舎・鶏だし・5 袋入",
-    shop: "博多車站",
+    name: "茅乃舍 高湯",
+    note: "博多車站 Deitos 1 樓・8:00–21:00・有博多限定飛魚高湯",
+    area: "博多車站",
     img: "assets/souvenirs/s5.jpg"
+  },
+  {
+    name: "治一郎 年輪蛋糕",
+    note: "博多車站 1 樓「いっぴん通り」・10:00–21:00・有分開包裝款",
+    area: "博多車站",
+    img: "assets/souvenirs/s6.jpg"
+  },
+  {
+    name: "明月堂 博多小饅頭",
+    note: "博多車站 MING 1・2 號店・9:00–21:00（Deitos 店 8:00 開）・招牌「博多通りもん」",
+    area: "博多車站",
+    img: "assets/souvenirs/s7.jpg"
+  },
+  {
+    name: "文明堂 長崎蛋糕",
+    note: "文明堂總本店 博多 MING 店・9:00–21:00・長崎蛋糕（カステラ）品牌",
+    area: "博多車站",
+    img: "assets/souvenirs/s8.jpg"
   }
 ]
 
-const foods = []
+// { name, note, area: "福岡燒肉" | "小倉燒肉", img?, mapUrl? | mapQuery? }
+const foods = [
+  {
+    name: "藥院燒肉",
+    note: "NIKUICHI・招牌「特選 7 種盛り合わせ」",
+    area: "福岡燒肉",
+    img: "assets/foods/f1.jpg",
+    mapUrl: "https://maps.app.goo.gl/uHb58HGoypiwG7Fq"
+  },
+  {
+    name: "黒毛和牛 博多牛まぶし 武蔵",
+    note: "牛肉版鰻魚飯三吃・木桶盛裝",
+    area: "福岡燒肉",
+    img: "assets/foods/f2.jpg",
+    mapUrl: "https://maps.app.goo.gl/41d2xJLFD7ovMZFJA"
+  },
+  {
+    name: "燒肉屋 天穗",
+    note: "店長推薦菜單・霜降和牛",
+    area: "小倉燒肉",
+    img: "assets/foods/c1.jpg",
+    mapUrl: "https://maps.app.goo.gl/ovGyfcQNdMqUsr978"
+  }
+]

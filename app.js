@@ -174,7 +174,7 @@ function placeCards(list, checkable) {
   const bought = loadBought()
   return list
     .map((p) => {
-      const url = p.mapQuery && `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.mapQuery)}`
+      const url = p.mapUrl || (p.mapQuery && `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.mapQuery)}`)
       const isBought = checkable && bought[p.name]
       return `
         <div class="place-card${isBought ? " bought" : ""}">
@@ -194,7 +194,7 @@ function placeCards(list, checkable) {
     .join("")
 }
 
-// filters: 依 item.shop 篩選，預設選第一個
+// filters: 依 item.area 篩選，預設選第一個
 function placesPanel(list, filters, checkable) {
   const panel = document.createElement("section")
   panel.className = "saved-panel"
@@ -203,7 +203,7 @@ function placesPanel(list, filters, checkable) {
     ${
       filters
         ? `<div class="cat-pills">
-        ${filters.map((f, i) => `<button class="cat-pill${i === 0 ? " active" : ""}" data-shop="${f}">${f}</button>`).join("")}
+        ${filters.map((f, i) => `<button class="cat-pill${i === 0 ? " active" : ""}" data-area="${f}">${f}</button>`).join("")}
     </div>`
         : ""
     }
@@ -211,13 +211,13 @@ function placesPanel(list, filters, checkable) {
 `
   const grid = panel.querySelector(".places-grid")
 
-  function render(shop) {
-    panel.querySelectorAll(".cat-pill").forEach((p) => p.classList.toggle("active", p.dataset.shop === shop))
-    grid.innerHTML = placeCards(shop ? list.filter((p) => p.shop === shop) : list, checkable)
+  function render(area) {
+    panel.querySelectorAll(".cat-pill").forEach((p) => p.classList.toggle("active", p.dataset.area === area))
+    grid.innerHTML = placeCards(area ? list.filter((p) => p.area === area) : list, checkable)
   }
 
   panel.querySelectorAll(".cat-pill").forEach((pill) => {
-    pill.addEventListener("click", () => render(pill.dataset.shop))
+    pill.addEventListener("click", () => render(pill.dataset.area))
   })
 
   grid.addEventListener("click", (e) => {
@@ -239,7 +239,7 @@ function placesPanel(list, filters, checkable) {
 
 const shrinePanel = placesPanel(shrines)
 const souvenirPanel = placesPanel(souvenirs, ["博多車站", "唐吉訶德"], true)
-const foodPanel = placesPanel(foods)
+const foodPanel = placesPanel(foods, ["福岡燒肉", "小倉燒肉"])
 
 /* ── SWITCH ── */
 const extraPanels = [stayPanel, shrinePanel, souvenirPanel, foodPanel]
